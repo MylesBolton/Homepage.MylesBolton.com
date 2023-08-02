@@ -67,12 +67,6 @@
     --ring: 217.2 32.6% 17.5%;
   }
 }
-
-.particle {
-  position: fixed;
-  width: 100%;
-  z-index: -1;
-}
  
 @layer base {
   * {

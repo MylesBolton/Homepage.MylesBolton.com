@@ -1,27 +1,29 @@
 "use client"
+import * as React from "react";
+import { ColorTheme, DateRange, MiniChart, } from "react-ts-tradingview-widgets";
+import { TradingVeiwConfig } from "@/src/TradingVeiw.config";
 import dynamic from "next/dynamic";
-import { MiniChart } from "react-ts-tradingview-widgets";
 
-
-export const SymbolOverviewNoSSR = dynamic(
+const SymbolOverviewNoSSR = dynamic(
   () => import("react-ts-tradingview-widgets").then((w) => w.SymbolOverview),
   {
     ssr: false,
   }
 );
 
-
-export function TradingVeiwWigets() {
-    return (
-        <section>
-            <div className="grid grid-cols-3 gap-12">
-                <MiniChart colorTheme="dark" width="350" dateRange="12M" locale="en" symbol="XAUGBP" ></MiniChart>
-                <MiniChart colorTheme="dark" width="350" dateRange="12M" locale="en" symbol="GBPUSD" ></MiniChart>
-                <MiniChart colorTheme="dark" width="350" dateRange="12M" locale="en" symbol="GBPEUR" ></MiniChart>
-                <MiniChart colorTheme="dark" width="350" dateRange="12M" locale="en" symbol="GBNEGTB" ></MiniChart>
-                <MiniChart colorTheme="dark" width="350" dateRange="3M" locale="en" symbol="BTCGBP" ></MiniChart>
-                <MiniChart colorTheme="dark" width="350" dateRange="3M" locale="en" symbol="XMRUSD" ></MiniChart>
-            </div> 
-        </section>
-    )
-}
+export function TradingVeiwWidgets() {
+  return (
+    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
+      {TradingVeiwConfig.map((config, index) => (
+        <div key={index as number}>
+          <MiniChart
+            symbol={config.symbol}
+            dateRange={config.dateRange}
+            colorTheme={"dark" as ColorTheme}
+            autosize={false}
+          />
+        </div>
+      ))}
+    </div>
+  );
+};
