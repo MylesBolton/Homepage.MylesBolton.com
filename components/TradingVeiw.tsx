@@ -13,7 +13,7 @@ const SymbolOverviewNoSSR = dynamic(
 
 export function TradingVeiwWidgets() {
   return (
-    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
+    <main className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
       {TradingVeiwConfig.map((config, index) => (
         <div key={index as number}>
           <MiniChart
@@ -24,6 +24,6 @@ export function TradingVeiwWidgets() {
           />
         </div>
       ))}
-    </div>
+    </main>
   );
 };

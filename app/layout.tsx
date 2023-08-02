@@ -19,20 +19,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head />
-      <div>
-        <DefaultBackground />
-      </div>
       <body>
-        <header className="md:container md:mx-auto">
-          <nav className=' m-12 rounded-md flex justify-center'>
-            <NavMenu />
-          </nav>
-        </header>
-        <div className="md:container md:mx-auto">
-          {children}
+        <div id="root">
+          <DefaultBackground />
+          <header className="md:container md:mx-auto">
+            <nav className=' m-12 rounded-md flex justify-center'>
+              <NavMenu />
+            </nav>
+          </header>
+          <div className="md:container md:mx-auto">
+            {children}
+          </div>
         </div>
       </body>
-
     </html>
   )
 }
