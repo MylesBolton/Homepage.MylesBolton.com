@@ -29,6 +29,8 @@ const ListItem = React.forwardRef<
             className
           )}
           id={id}
+          target="_blank"
+          rel="noopener noreferrer"
           {...restProps}
         >
           <div className="text-sm font-medium leading-none">{title}</div>
