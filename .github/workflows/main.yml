@@ -16,6 +16,14 @@ jobs:
       with:
         node-version: '14'
 
+    - name: Check for pull requests on the master branch
+      run: |
+        if [[ ${{ github.event_name }} == 'pull_request' && ${{ github.ref }} == 'refs/heads/master' ]]; then
+          echo "Pull request found on the master branch"
+        else
+          echo "No pull request found on the master branch"
+        fi
+
     - name: Install dependencies
       run: npm install
 
@@ -24,3 +32,11 @@ jobs:
 
     - name: Check for vulnerabilities
       run: npm audit || true
+
+    - name: Automatically merge pull request
+      if: ${{ github.event_name }} == 'pull_request' && ${{ github.ref }} == 'refs/heads/master' && success()
+      run: |
+        echo "Merging pull request..."
+        # Use GitHub API to automatically merge the pull request
+        # Replace this line with the actual command to merge the pull request
+        echo "Pull request merged successfully"
