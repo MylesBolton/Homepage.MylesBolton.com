@@ -22,5 +22,12 @@ jobs:
     - name: Run tests
       run: npm run dev
 
+    - name: Save logs as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: Logs
+        path: path/to/logs
+        expires-in: 30 days
+
     - name: Check for vulnerabilities
       run: npm audit || true
