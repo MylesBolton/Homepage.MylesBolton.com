@@ -23,15 +23,4 @@ jobs:
       run: npm run test
 
     - name: Check for vulnerabilities
-      run: npm audit
-
-    - name: Merge pull request
-      if: success()
-      uses: pascalgn/automerge-action@v0.13.1
-      env:
-        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-        MERGE_LABELS: ""
-        MERGE_METHOD: "squash"
-        MERGE_COMMIT_MESSAGE: "Automatic merge of successful PR"
-        MERGE_FORKS: false
-        UPDATE_LABELS: ""
+      run: npm audit || true
